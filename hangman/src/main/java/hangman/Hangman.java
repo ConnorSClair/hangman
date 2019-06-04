@@ -2,6 +2,7 @@ package com.connor.games;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.Random;
 import com.connor.games.HangmanLexicon;
 /* Model in the MVC design pattern. Implements game logic */
 
@@ -21,8 +22,6 @@ public class Hangman {
             char letter = this.word.charAt(i);
             if (!(this.letterLocations.containsKey(letter))) {
                 this.letterLocations.put(letter,new HashSet<Integer>());
-
-
             }
             this.letterLocations.get(letter).add(i);
         }
@@ -50,17 +49,17 @@ public class Hangman {
     }
 
     public Hangman() {
+        Random random = new Random();
+        int wordChoice = random.nextInt(10);
         try {
-            this.word = HangmanLexicon.getWord(3);
+            this.word = HangmanLexicon.getWord(wordChoice);
         } catch(Exception e) {
             System.exit(1);
         }
         this.prepareGame();
     }
 
-    
-    
-    /* Returns true if letter is in word or false if not*/
+    /* Handles a guess. Returns true if letter is in word or false if not*/
     public boolean guess(char letter) {
         this.lettersGuessed.add(letter);
         if (this.letterLocations.keySet().contains(letter)) {
@@ -76,7 +75,8 @@ public class Hangman {
         }
     }
 
-    public String getMaskedWord() {
+    /* Returns the masked word with spaces for printing purposes (e.g. looks like this _ _ D _ _ A _ */ 
+    public String printMaskedWord() {
         String result = "";
         for (int i = 0; i < this.maskedLetters.size(); i++) {
             result = result.concat(this.maskedLetters.get(i).toString());
@@ -87,15 +87,29 @@ public class Hangman {
         return result;
     }
 
+    public String getMaskedWord() {
+        String result = "";
+        for (int i = 0; i < this.maskedLetters.size(); i++) {
+            result = result.concat(this.maskedLetters.get(i).toString());
+        }
+        return result;
+    }
+
+    public String getWord() {
+        return this.word;
+    }
+ 
     public int getbadGuessesRemaining() {
         return this.guessesAllowed - this.badGuesses;
     }
 
+    /* Game is over and returns true if no more incorrect guesses remaining or player has correctly guessed the word, otherwise retursn false*/
     public boolean isGameOver() {
         return getbadGuessesRemaining() <= 0 || this.letterLocations.keySet().equals(this.lettersGuessed);
     }
 
-    public boolean gameOutcome() {
+    /* Returns true (i.e. wins game) if all the letters in the word and guessed, otherwise false*/ 
+    public boolean wonGame() {
         return this.letterLocations.keySet().equals(this.lettersGuessed);
     }
 
