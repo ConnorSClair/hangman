@@ -30,7 +30,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.connor.games.App</mainClass>
+                            <mainClass>com.connor.games.HangmanController</mainClass>
                         </manifest>
                         </archive>
                     </configuration>
