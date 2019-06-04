@@ -17,8 +17,8 @@ Clone the repository
 `git clone https://github.com/ConnorSClair/hangman.git`
 
 Make the jar file
-`mvn package -f "hangman/hangman/pom.xml"`
+`mvn package -f pom.xml`
 
 Run the jar file 
-`java -jar hangman/hangman/target/hangman-1.0.jar`
+`java -jar target/hangman-1.0.jar`
 
