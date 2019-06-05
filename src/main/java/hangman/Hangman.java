@@ -51,7 +51,6 @@ public class Hangman {
     public Hangman() {
         Random random = new Random();
         int wordChoice = random.nextInt(10);
-        wordChoice = 2;
         try {
             this.word = HangmanLexicon.getWord(wordChoice);
         } catch(Exception e) {
