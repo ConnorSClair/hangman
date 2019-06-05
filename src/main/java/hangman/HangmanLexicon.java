@@ -1,4 +1,4 @@
-package com.connor.games;
+package main.java.hangman;
 /*
  * File: HangmanLexicon.java
  * -------------------------
