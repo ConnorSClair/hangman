@@ -51,6 +51,7 @@ public class Hangman {
     public Hangman() {
         Random random = new Random();
         int wordChoice = random.nextInt(10);
+        wordChoice = 2;
         try {
             this.word = HangmanLexicon.getWord(wordChoice);
         } catch(Exception e) {
@@ -105,12 +106,12 @@ public class Hangman {
 
     /* Game is over and returns true if no more incorrect guesses remaining or player has correctly guessed the word, otherwise retursn false*/
     public boolean isGameOver() {
-        return getbadGuessesRemaining() <= 0 || this.letterLocations.keySet().equals(this.lettersGuessed);
+        return getbadGuessesRemaining() <= 0 || this.letterLocations.keySet().equals(this.correctLettersGuessed);
     }
 
     /* Returns true (i.e. wins game) if all the letters in the word and guessed, otherwise false*/ 
     public boolean wonGame() {
-        return this.letterLocations.keySet().equals(this.lettersGuessed);
+        return this.letterLocations.keySet().equals(this.correctLettersGuessed);
     }
 
     public String compareMaskedWithActual() {
