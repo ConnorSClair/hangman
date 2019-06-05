@@ -16,6 +16,9 @@ From the terminal of your choice:
 Clone the repository 
 `git clone https://github.com/ConnorSClair/hangman.git`
 
+change directory
+`cd hangman`
+
 Make the jar file
 `mvn package -f pom.xml`
 
