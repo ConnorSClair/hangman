@@ -6,6 +6,9 @@ Implementation of Hangman as part of the Google Tech Dev Guide [Foundations of P
 Based on [Stanford CS106A Winter 2011-2012 Assignment #4](https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1124/handouts/200%20Assignment%204.pdf
  "Assignment Tasksheet")
 
+## Screenshot
+[Gameplay screenshot](Images/hangman-screenshot.png "Gameplay Screenshot")
+
 ## Requirements
 - Java 
 - Maven
