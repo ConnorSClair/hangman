@@ -7,7 +7,7 @@ Based on [Stanford CS106A Winter 2011-2012 Assignment #4](https://web.stanford.e
  "Assignment Tasksheet")
 
 ## Screenshot
-[Gameplay screenshot](Images/hangman-screenshot.png "Gameplay Screenshot")
+![Gameplay screenshot](Images/hangman-screenshot.png "Gameplay Screenshot")
 
 ## Requirements
 - Java 
