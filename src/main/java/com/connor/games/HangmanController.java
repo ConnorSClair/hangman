@@ -1,6 +1,5 @@
-package main.java.hangman;
+package com.connor.games;
 import java.util.Scanner;
-import main.java.hangman.Hangman;
 
 public class HangmanController {
     Hangman hangman;

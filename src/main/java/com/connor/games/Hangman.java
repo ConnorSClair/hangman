@@ -1,9 +1,8 @@
-package main.java.hangman;
+package com.connor.games;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Random;
-import main.java.hangman.HangmanLexicon;
 /* Model in the MVC design pattern. Implements game logic */
 
 public class Hangman {
