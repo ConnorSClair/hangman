@@ -12,7 +12,7 @@ public class Hangman {
     private int badGuesses;
     private int guessesAllowed;
     private HashMap<Character,HashSet<Integer>> letterLocations;
-    private HashSet<Character> lettersGuessed;
+    private ArrayList<Character> incorrectLettersGuessed;
     private HashSet<Character> correctLettersGuessed;
 
     private void buildLetterLocations() {
@@ -27,7 +27,7 @@ public class Hangman {
     }
 
     private void buildLettersGuessed() {
-        this.lettersGuessed = new HashSet<>();
+        this.incorrectLettersGuessed = new ArrayList<Character>();
         this.correctLettersGuessed = new HashSet<>();
     }
     
@@ -60,7 +60,7 @@ public class Hangman {
 
     /* Handles a guess. Returns true if letter is in word or false if not*/
     public boolean guess(char letter) {
-        this.lettersGuessed.add(letter);
+
         if (this.letterLocations.keySet().contains(letter)) {
             HashSet<Integer> lettersUpdate = this.letterLocations.get(letter);
             for (Integer loc : lettersUpdate) {
@@ -70,6 +70,7 @@ public class Hangman {
             return true;
         } else {
             this.badGuesses += 1;
+            this.incorrectLettersGuessed.add(letter);
             return false;
         }
     }
@@ -119,4 +120,9 @@ public class Hangman {
     public String compareMaskedWithActual() {
         return String.format("Masked: %s, Actual: %s", getMaskedWord(), this.word);
     }
+
+    public ArrayList<Character> getIncorrectLettersGuessed() {
+        return this.incorrectLettersGuessed;
+    }
+
 }

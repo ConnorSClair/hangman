@@ -17,6 +17,7 @@ public class HangmanController {
         HangmanController controller = new HangmanController();
         Scanner userInput = new Scanner(System.in);
         while (true) {
+            Gallows.IncorrectLetters(controller.hangman.getIncorrectLettersGuessed());
             Gallows.view(controller.hangman.getBadGuesses());
             System.out.println(String.format("The word now looks like this: %s",controller.hangman.printMaskedWord()));
             System.out.println(String.format("You have %d guesses left.", controller.hangman.getBadGuessesRemaining()));
@@ -48,7 +49,11 @@ public class HangmanController {
                 System.out.println(String.format("There are no %c's in this word.", letter));
             }
         } else {
-            System.out.println("invalid guess");
+            System.out.println("Would you like to quit? Y / N");
+            line = userInput.next();
+            if (line.equals("Y")) {
+                System.exit(0);
+            }
         }
     }
 

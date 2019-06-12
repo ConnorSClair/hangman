@@ -1,5 +1,6 @@
 package com.connor.games;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Gallows {
@@ -15,23 +16,38 @@ public class Gallows {
         String[] baseLines = new String[]{".","|","|","|","|","|__________"};
         String[][] parts = new String[][]{new String[]{"_______"},new String[]{"      |"},
             new String[]{"     \\","o","/"},new String[]{"      I"},new String[]{"     /"," \\"}, new String[]{}};
-        String result = "";
+        String output = "";
         int count = 0;
         // add parts until count reaches badGuesses
         for (int line = 0; line < baseLines.length; line++) {
             // e.g. new String[][]{new String[]{"_____"},...,new String[]{".","    ","m"}}
-            result += baseLines[line];
+            output += baseLines[line];
             for (int i = 0; i < parts[line].length; i++) {
                 if (count < badGuesses) {
-                    result += parts[line][i];
+                    output += parts[line][i];
                     count += 1;
                 } else {
                     break;
                 }
             }
-            result += "\n";
+            if (line < baseLines.length - 1) {
+                output += "\n";
+            }
         }
-        System.out.println(result);
+        System.out.println(output);
+    }
+
+    public static void IncorrectLetters(ArrayList<Character> letters) {
+        String output = "";
+        int strikeThrough = 0x0338;
+        for (int i = 0; i < letters.size(); i++) {
+            char letter = letters.get(i);
+            output += String.format("%c%c",letters.get(i),(char)strikeThrough);
+            if (i < letters.size() - 1) {
+                output += " ";
+            }
+        }
+        System.out.println(output);
     }
 
 
