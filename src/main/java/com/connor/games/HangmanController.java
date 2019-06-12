@@ -17,8 +17,9 @@ public class HangmanController {
         HangmanController controller = new HangmanController();
         Scanner userInput = new Scanner(System.in);
         while (true) {
+            Gallows.view(controller.hangman.getBadGuesses());
             System.out.println(String.format("The word now looks like this: %s",controller.hangman.printMaskedWord()));
-            System.out.println(String.format("You have %d guesses left.", controller.hangman.getbadGuessesRemaining()));
+            System.out.println(String.format("You have %d guesses left.", controller.hangman.getBadGuessesRemaining()));
             controller.gameTurn(userInput);
             if (controller.hangman.isGameOver()) {
                 if (controller.hangman.wonGame()) {

@@ -1,4 +1,4 @@
-package test.java.hangman;
+package test.java.com.connor.games;
 
 import org.junit.Test;
 

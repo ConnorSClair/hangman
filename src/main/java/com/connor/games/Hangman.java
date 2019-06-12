@@ -11,7 +11,7 @@ public class Hangman {
     private ArrayList<Character> maskedLetters;
     private int badGuesses;
     private int guessesAllowed;
-    private HashMap<Character,HashSet> letterLocations;
+    private HashMap<Character,HashSet<Integer>> letterLocations;
     private HashSet<Character> lettersGuessed;
     private HashSet<Character> correctLettersGuessed;
 
@@ -98,13 +98,17 @@ public class Hangman {
         return this.word;
     }
  
-    public int getbadGuessesRemaining() {
+    public int getBadGuessesRemaining() {
         return this.guessesAllowed - this.badGuesses;
+    }
+    
+    public int getBadGuesses() {
+        return this.badGuesses;
     }
 
     /* Game is over and returns true if no more incorrect guesses remaining or player has correctly guessed the word, otherwise retursn false*/
     public boolean isGameOver() {
-        return getbadGuessesRemaining() <= 0 || this.letterLocations.keySet().equals(this.correctLettersGuessed);
+        return getBadGuessesRemaining() <= 0 || this.letterLocations.keySet().equals(this.correctLettersGuessed);
     }
 
     /* Returns true (i.e. wins game) if all the letters in the word and guessed, otherwise false*/ 
