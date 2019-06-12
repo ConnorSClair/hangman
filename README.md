@@ -8,6 +8,7 @@ Based on [Stanford CS106A Winter 2011-2012 Assignment #4](https://web.stanford.e
 
 ## Screenshot
 ![Gameplay screenshot](Images/gameplay-screenshot.png "Gameplay Screenshot")
+
 ![Gameplay screenshot](Images/lost-game-screenshot.png "Game Over Screenshot")
 
 ## Requirements
