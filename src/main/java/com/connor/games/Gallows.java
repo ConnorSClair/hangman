@@ -12,19 +12,24 @@ public class Gallows {
         |     / \
         |__________"*/
     public static void view(int badGuesses) {
-        String[] base = new String[]{".","|","|","|","|","|__________"};
-        String[] parts = new String[]{"_______","      |","     \\o/","      I","     / \\",""};
-        
+        String[] baseLines = new String[]{".","|","|","|","|","|__________"};
+        String[][] parts = new String[][]{new String[]{"_______"},new String[]{"      |"},
+            new String[]{"     \\","o","/"},new String[]{"      I"},new String[]{"     /"," \\"}, new String[]{}};
         String result = "";
-        for (int i = 0; i < base.length; i++) {
-            // if badGuesses is 0 I want for ALL i append ""
-            // if badGuesses is 1, I want i = 0 
-            // if badGuesses is 2, I want i = 0 and i = 1
-            if (i < badGuesses) {
-                result += String.join("",base[i],parts[i],"\n");
-            } else {
-                result += String.join("",base[i],"\n");
+        int count = 0;
+        // add parts until count reaches badGuesses
+        for (int line = 0; line < baseLines.length; line++) {
+            // e.g. new String[][]{new String[]{"_____"},...,new String[]{".","    ","m"}}
+            result += baseLines[line];
+            for (int i = 0; i < parts[line].length; i++) {
+                if (count < badGuesses) {
+                    result += parts[line][i];
+                    count += 1;
+                } else {
+                    break;
+                }
             }
+            result += "\n";
         }
         System.out.println(result);
     }
