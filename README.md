@@ -7,7 +7,8 @@ Based on [Stanford CS106A Winter 2011-2012 Assignment #4](https://web.stanford.e
  "Assignment Tasksheet")
 
 ## Screenshot
-![Gameplay screenshot](Images/hangman-screenshot.png "Gameplay Screenshot")
+![Gameplay screenshot](Images/gameplay-screenshot.png "Gameplay Screenshot")
+![Gameplay screenshot](Images/lost-game-screenshot.png "Game Over Screenshot")
 
 ## Requirements
 - Java 
@@ -23,8 +24,8 @@ change directory
 `cd hangman`
 
 Make the jar file
-`mvn package -f pom.xml`
+`mvn clean install`
 
-Run the jar file 
-`java -jar target/hangman-1.0.jar`
+Run the game 
+`java -cp target/hangman-1.0.jar com.connor.games.HangmanController`
 

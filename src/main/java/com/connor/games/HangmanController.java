@@ -27,6 +27,7 @@ public class HangmanController {
                     System.out.println(String.format("You guessed the word: %s",controller.hangman.getMaskedWord()));
                     System.out.println("You win.");
                 } else {
+                    Gallows.IncorrectLetters(controller.hangman.getIncorrectLettersGuessed());
                     Gallows.view(controller.hangman.getBadGuesses());
                     System.out.println("You're completely hung.");
                     System.out.println(String.format("The word was: %s",controller.hangman.getWord()));
