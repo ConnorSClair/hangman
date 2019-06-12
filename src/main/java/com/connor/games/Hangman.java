@@ -1,6 +1,8 @@
 package com.connor.games;
+
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.ArrayList;
 import java.util.Random;
 /* Model in the MVC design pattern. Implements game logic */
@@ -12,7 +14,7 @@ public class Hangman {
     private int badGuesses;
     private int guessesAllowed;
     private HashMap<Character,HashSet<Integer>> letterLocations;
-    private ArrayList<Character> incorrectLettersGuessed;
+    private LinkedHashSet<Character> incorrectLettersGuessed;
     private HashSet<Character> correctLettersGuessed;
 
     private void buildLetterLocations() {
@@ -27,7 +29,7 @@ public class Hangman {
     }
 
     private void buildLettersGuessed() {
-        this.incorrectLettersGuessed = new ArrayList<Character>();
+        this.incorrectLettersGuessed = new LinkedHashSet<>();
         this.correctLettersGuessed = new HashSet<>();
     }
     
@@ -62,12 +64,19 @@ public class Hangman {
     public boolean guess(char letter) {
 
         if (this.letterLocations.keySet().contains(letter)) {
+            // correct guess
             HashSet<Integer> lettersUpdate = this.letterLocations.get(letter);
             for (Integer loc : lettersUpdate) {
                 this.maskedLetters.set(loc,letter);
             }
             this.correctLettersGuessed.add(letter);
             return true;
+        } else if (this.correctLettersGuessed.contains(letter)) {
+            // do nothing
+            return true;
+        } else if (this.incorrectLettersGuessed.contains(letter)){
+            // do nothing
+            return false;
         } else {
             this.badGuesses += 1;
             this.incorrectLettersGuessed.add(letter);
@@ -121,7 +130,7 @@ public class Hangman {
         return String.format("Masked: %s, Actual: %s", getMaskedWord(), this.word);
     }
 
-    public ArrayList<Character> getIncorrectLettersGuessed() {
+    public LinkedHashSet<Character> getIncorrectLettersGuessed() {
         return this.incorrectLettersGuessed;
     }
 

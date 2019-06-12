@@ -1,7 +1,11 @@
 package com.connor.games;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.lang.Iterable;
 
 public class Gallows {
 
@@ -37,14 +41,19 @@ public class Gallows {
         System.out.println(output);
     }
 
-    public static void IncorrectLetters(ArrayList<Character> letters) {
+    public static void IncorrectLetters(LinkedHashSet<Character> letters) {
         String output = "";
         int strikeThrough = 0x0338;
-        for (int i = 0; i < letters.size(); i++) {
-            char letter = letters.get(i);
-            output += String.format("%c%c",letters.get(i),(char)strikeThrough);
-            if (i < letters.size() - 1) {
-                output += " ";
+        Iterator<Character> iterator = letters.iterator();
+        while (true) {
+            if (iterator.hasNext()) {
+                char letter = iterator.next();
+                output += String.format("%c%c",letter,(char)strikeThrough);
+                if (iterator.hasNext()) {
+                    output += " ";
+                } 
+            } else {
+                break;
             }
         }
         System.out.println(output);
