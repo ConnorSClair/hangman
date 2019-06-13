@@ -28,5 +28,5 @@ Make the jar file
 `mvn clean install`
 
 Run the game 
-`java -cp target/hangman-1.0.jar com.connor.games.HangmanController`
+`java -cp target/hangman-1.0-SNAPSHOT.jar com.connor.games.HangmanController`
 
